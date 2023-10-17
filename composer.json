@@ -1,0 +1,34 @@
+{
+  "name": "yuanzhihai/think-aop",
+  "description": "description",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "yuanzhihai",
+      "email": "396751927@qq.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ting\\Aop\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.0.2",
+    "nikic/php-parser": "^4.10"
+  },
+  "require-dev": {
+    "topthink/framework": "^8.0.x-dev"
+  },
+  "extra": {
+    "think": {
+      "config": {
+        "aop": "config/config.php"
+      },
+      "services": [
+        "Ting\\Aop\\AopServiceProvider"
+      ]
+    }
+  }
+}
