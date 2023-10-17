@@ -3,6 +3,7 @@
 namespace Ting\Aop;
 
 use Composer\Autoload\ClassLoader;
+use Ting\Aop\attributes\Aspect;
 use Ting\Aop\exception\ParseException;
 
 /**
@@ -54,9 +55,14 @@ class AspectCollects
     private function parseAspectClass(string $class, ProxyCollects $proxyCollects): array
     {
         $aspectReflect   = new \ReflectionClass($class);
-        $classesProperty = $aspectReflect->getProperty('classes');
-        /** @var array $aopClasses */
-        $aopClasses = $classesProperty->getValue(new $class());
+        $attrs = $aspectReflect->getAttributes(Aspect::class, \ReflectionAttribute::IS_INSTANCEOF);
+        if (!empty($attrs[0])) {
+            $classes    = $attrs[0]->getArguments();
+            $aopClasses = $classes['classes'] ?? [];
+        } else {
+            $classesProperty = $aspectReflect->getProperty('classes');
+            $aopClasses      = $classesProperty->getValue(new $class());
+        }
         if (empty($aopClasses)) {
             return [];
         }
