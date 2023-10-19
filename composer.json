@@ -1,6 +1,6 @@
 {
   "name": "yuanzhihai/think-aop",
-  "description": "description",
+  "description": "aop aspect 切片 for the thinkphp6+ plugin",
   "minimum-stability": "dev",
   "license": "MIT",
   "authors": [
