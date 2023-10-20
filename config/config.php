@@ -1,8 +1,11 @@
 <?php
 return [
-    'scans'        => [
-        base_path('aspect') => 'app\aspect',
+    'aspects'     => [],
+    'proxy_dirs'  => [
+        app_path(),
     ],
-    'storage_path' => runtime_path('aop') . 'aopProxyClasses',
-    'aspect'       => [],
+    'proxy_all'   => false,
+    'except_dirs' => [],
+    'cacheable'   => true,
+    'storage_dir' => runtime_path('aop'),
 ];
